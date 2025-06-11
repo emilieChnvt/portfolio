@@ -38,5 +38,55 @@
                 Mon parcours est jeune, mais déjà riche. Je suis fière d’avoir pu, en quelques mois, mener à bien plusieurs projets complets mêlant bases de données, interface utilisateur et logique métier. Je suis toujours en quête de nouveaux défis pour progresser et affiner mes compétences.</p>
         </div>
     </section>
+    <section id="projects" class="flex flex-col items-center justify-center min-h-screen gap-10 text-center px-4">
+        <div class="w-full max-w-full">
+            <h4 class="text-4xl mb-8">Mes projets</h4>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
+                <div class="flex flex-col gap-2 items-center  p-4 ">
+                    <div class="border ">
+                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
+                    </div>
+                    <div class="flex mt-3">
+                        <p class="text-left">text name projet</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 items-center  p-4 ">
+                    <div class="border ">
+                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
+                    </div>
+                    <div class="flex mt-3">
+                        <p>text name projet</p>
+                    </div>
+                </div><div class="flex flex-col gap-2 items-center  p-4 ">
+                    <div class="border ">
+                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
+                    </div>
+                    <div class="flex mt-3">
+                        <p>text name projet</p>
+                    </div>
+                </div><div class="flex flex-col gap-2 items-center border p-4">
+                    <div class="border">
+                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
+                    </div>
+                    <div class="flex mt-3">
+                        <p>text name projet</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="flex flex-col items-center justify-center min-h-screen gap-10 text-center px-4">
+        <div class="flex flex-col items-center gap-4">
+            <p>Vous voulez en savoir plus sur mon parcours professionnel</p>
+            <div class="flex flex-col items-center gap-2">
+                <h2 class="text-3xl">Téléchargez directement mon CV ici</h2>
+                <a href="{{ asset('images/cv.26.11.pdf') }}" class="btn btn-download border py-3 px-5 rounded-full">Télécharger</a>
+            </div>
+        </div>
+    </section>
+
 
 {% endblock %}

@@ -88,5 +88,73 @@
         </div>
     </section>
 
+    <section id="contact" class="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mt-10 px-4">
+
+        <!-- Bloc gauche : Infos de contact -->
+        <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6 space-y-6">
+            <h2 class="text-3xl font-bold mb-4">Discutons ensemble</h2>
+
+            <div class="flex items-center gap-4">
+                <p>{{ ux_icon('ic:baseline-phone', { class: 'w-6' }) }}</p>
+                <p>06 40 89 01 09</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <p>{{ ux_icon('material-symbols:mail', { class: 'w-6' }) }}</p>
+                <p>contact@emiliechanavat.com</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <p>{{ ux_icon('mdi:google-maps', { class: 'w-6' }) }}</p>
+                <p>Lyon, France</p>
+            </div>
+        </div>
+
+        <!-- Bloc droit : Formulaire -->
+        <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6 space-y-4">
+            <p class="text-lg text-gray-700">Une question, un projet ou juste envie d’échanger ? Contactez-moi, je vous répondrai avec plaisir.</p>
+
+            {% for message in app.flashes('success') %}
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+
+            <div>
+                {{ form_label(form.nom, null, {'label_attr': {'class': 'block font-medium mb-1'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'w-full border border-gray-300 rounded px-3 py-2'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+            <div>
+                {{ form_label(form.email, null, {'label_attr': {'class': 'block font-medium mb-1'}}) }}
+                {{ form_widget(form.email, {'attr': {'class': 'w-full border border-gray-300 rounded px-3 py-2'}}) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div>
+                {{ form_label(form.sujet, null, {'label_attr': {'class': 'block font-medium mb-1'}}) }}
+                {{ form_widget(form.sujet, {'attr': {'class': 'w-full border border-gray-300 rounded px-3 py-2'}}) }}
+                {{ form_errors(form.sujet) }}
+            </div>
+
+            <div>
+                {{ form_label(form.message, null, {'label_attr': {'class': 'block font-medium mb-1'}}) }}
+                {{ form_widget(form.message, {'attr': {'class': 'w-full border border-gray-300 rounded px-3 py-2 min-h-[120px]'}}) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            <div>
+                {{ form_widget(form.envoyer, {'attr': {'class': 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300'}}) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+    </section>
+
+
 
 {% endblock %}

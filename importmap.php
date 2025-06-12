@@ -26,10 +26,10 @@ return [
         'version' => '8.0.13',
     ],
     'tailwindcss' => [
-        'version' => '4.1.8',
+        'version' => '4.1.10',
     ],
     'tailwindcss/index.min.css' => [
-        'version' => '4.1.8',
+        'version' => '4.1.10',
         'type' => 'css',
     ],
     'tailwind' => [

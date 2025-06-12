@@ -3,115 +3,94 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-        <section id="home" class="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 lg:gap-32 text-center lg:text-left px-4">
-
-            <div>
-                <p>Salut, je suis</p>
-                <div class="mt-3">
-                    <h2 class="text-4xl lg:text-5xl">Emilie CHANAVAT</h2>
-                    <p class="text-lg">Développeuse web Fullstack</p>
-                </div>
-                <div class="flex flex-col items-center gap-y-[20px] mt-6">
-                    <a href="" class="border py-2 px-5 rounded-full">À propos </a>
-                    <a href="" class="border py-2 px-5 rounded-full">Mes projets</a>
-                    <a href="" class="border py-2 px-5 rounded-full">Mon CV</a>
-                    <a href="" class="border py-2 px-5 rounded-full">Me contacter</a>
-                </div>
-            </div>
-
-
-            <div class="lg:w-1/3 flex justify-center">
-                <img src="{{ asset('images/imageOfMe.png') | imagine_filter('product') }}" alt="Emilie" class="w-full h-auto object-cover max-w-[600px] max-h-[800px]">
-            </div>
-        </section>
-    <section id="about" class="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 lg:gap-32 text-center lg:text-left px-4">
-
+    <section id="home" class="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 lg:gap-32 text-center lg:text-left px-4 bg-gradient-to-r from-fuchsia-300 to-amber-200 py-16"> <!-- de gauche à droite-->
         <div>
-
-        </div>
-
-
-        <div class="lg:w-1/3 flex flex-col justify-center gap-10">
-            <h2 class="text-4xl">À propos de moi</h2>
-            <p>Je m'appelle Emilie, j'ai 22 ans, et je suis actuellement en première année de Bachelor Développement Web au sein de l’école supérieure du Digital à Lyon. Cette formation me prépare à l'obtention du titre RNCP de niveau 6 "Concepteur et Développeur d’Applications".
-                En seulement 7 mois, je me suis formée intensivement au développement web fullstack, et je suis aujourd’hui capable de concevoir des applications web complètes, du back-end au front-end. J’ai appris à travailler avec des technologies comme HTML, CSS, JavaScript, PHP, MySQL, et je découvre également des frameworks comme React et Laravel.
-                Mon parcours est jeune, mais déjà riche. Je suis fière d’avoir pu, en quelques mois, mener à bien plusieurs projets complets mêlant bases de données, interface utilisateur et logique métier. Je suis toujours en quête de nouveaux défis pour progresser et affiner mes compétences.</p>
-        </div>
-    </section>
-    <section id="projects" class="flex flex-col items-center justify-center min-h-screen gap-10 text-center px-4">
-        <div class="w-full max-w-full">
-            <h4 class="text-4xl mb-8">Mes projets</h4>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
-                <div class="flex flex-col gap-2 items-center  p-4 ">
-                    <div class="border ">
-                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
-                    </div>
-                    <div class="flex mt-3">
-                        <p class="text-left">text name projet</p>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-2 items-center  p-4 ">
-                    <div class="border ">
-                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
-                    </div>
-                    <div class="flex mt-3">
-                        <p>text name projet</p>
-                    </div>
-                </div><div class="flex flex-col gap-2 items-center  p-4 ">
-                    <div class="border ">
-                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
-                    </div>
-                    <div class="flex mt-3">
-                        <p>text name projet</p>
-                    </div>
-                </div><div class="flex flex-col gap-2 items-center border p-4">
-                    <div class="border">
-                        <img class="" src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="">
-                    </div>
-                    <div class="flex mt-3">
-                        <p>text name projet</p>
-                    </div>
-                </div>
-
+            <p class="text-lg text-fuchsia-700 font-medium">Salut, je suis</p>
+            <div class="mt-3">
+                <h2 class="text-5xl font-bold text-fuchsia-800">Emilie CHANAVAT</h2>
+                <p class="text-xl text-gray-700">Développeuse web Fullstack</p>
+            </div>
+            <div class="flex flex-col items-center lg:items-start gap-y-4 mt-6">
+                <a href="#about" class="bg-white text-fuchsia-700 border border-fuchsia-600 py-2 px-5 rounded-full hover:bg-fuchsia-100 transition">À propos </a>
+                <a href="#projects" class="bg-white text-purple-700 border border-purple-600 py-2 px-5 rounded-full hover:bg-purple-100 transition">Mes projets</a>
+                <a href="#cv" class="bg-white text-amber-700 border border-amber-600 py-2 px-5 rounded-full hover:bg-amber-100 transition">Mon CV</a>
+                <a href="#contact" class="bg-white text-pink-700 border border-pink-600 py-2 px-5 rounded-full hover:bg-pink-100 transition">Me contacter</a>
             </div>
         </div>
-    </section>
 
-    <section id="cv" class="flex flex-col items-center justify-center min-h-screen gap-10 text-center px-4">
-        <div class="flex flex-col items-center gap-4">
-            <p>Vous voulez en savoir plus sur mon parcours professionnel</p>
-            <div class="flex flex-col items-center gap-2">
-                <h2 class="text-3xl">Téléchargez directement mon CV ici</h2>
-                <a href="{{ asset('images/cv.26.11.pdf') }}" class="btn btn-download border py-3 px-5 rounded-full">Télécharger</a>
+        <div class="lg:w-1/3 flex justify-center">
+            <img src="{{ asset('images/imageOfMe.png') | imagine_filter('product') }}" alt="Emilie" class="w-full h-auto object-cover max-w-[400px] rounded-xl shadow-lg">
+        </div>
+    </section>
+    <section id="about" class="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 px-6 py-16 bg-gradient-to-b from-fuchsia-50 via-white to-amber-50">
+        <div class="lg:w-1/3"></div>
+
+        <div class="lg:w-2/3 max-w-3xl text-left">
+            <h2 class="text-4xl font-semibold mb-6 text-fuchsia-800">À propos de moi</h2>
+
+            <p class="text-lg text-gray-700 leading-relaxed" data-aos="fade-right" data-aos-duration="1000">
+          Je m'appelle Emilie, j'ai 22 ans, et je suis actuellement en première année de Bachelor Développement Web au sein de l’école supérieure du Digital à Lyon. Cette formation me prépare à l'obtention du titre RNCP de niveau 6 "Concepteur et Développeur d’Applications".
+                En seulement 7 mois, je me suis formée intensivement au développement web fullstack, et je suis aujourd’hui capable de concevoir des applications web complètes, du back-end au front-end. J’ai appris à travailler avec des technologies comme HTML, CSS, JavaScript, PHP, et je découvre également des frameworks comme Symfony et React par la suite.
+                Mon parcours est jeune, mais déjà riche. Je suis fière d’avoir pu, en quelques mois, mener à bien plusieurs projets complets mêlant bases de données, interface utilisateur et logique métier. Je suis toujours en quête de nouveaux défis pour progresser et affiner mes compétences.</p>
+        </div>
+    </section>
+    <section id="projects" class="min-h-screen px-6 py-16 text-center bg-gradient-to-t from-fuchsia-50 via-white to-amber-50">
+        <h4 class="text-4xl mb-12 font-semibold text-fuchsia-800">Mes projets</h4>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
+                <img src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-cover w-full h-48">
+                <p class="text-lg font-medium text-gray-800">Nom du projet 1</p>
             </div>
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
+                <img src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-cover w-full h-48">
+                <p class="text-lg font-medium text-gray-800">Nom du projet 1</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
+                <img src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-cover w-full h-48">
+                <p class="text-lg font-medium text-gray-800">Nom du projet 1</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
+                <img src="{{ asset('images/imageOfMe.png') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-cover w-full h-48">
+                <p class="text-lg font-medium text-gray-800">Nom du projet 1</p>
+            </div>
+
+
+
         </div>
     </section>
 
-    <section id="contact" class="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mt-10 px-4">
+    <section id="cv" class="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-r from-amber-200 to-fuchsia-300">
+        <div class="max-w-xl text-center">
+            <h2 class="text-4xl font-bold mb-4 text-fuchsia-900">Découvrez mon parcours professionnel</h2>
+            <p class="mb-8 text-lg text-fuchsia-800">
+                Vous souhaitez en savoir plus sur mon expérience et mes compétences ? Téléchargez mon CV au format PDF.
+            </p>
+            <a href="{{ asset('images/cv.26.11.pdf') }}" download
+               class="inline-flex items-center gap-3 bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                {{ ux_icon('material-symbols:download', {class : 'w-6'}) }}
+                Télécharger mon CV
+            </a>
+        </div>
+    </section>
 
-        <!-- Bloc gauche : Infos de contact -->
-        <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6 space-y-6">
-            <h2 class="text-3xl font-bold mb-4">Discutons ensemble</h2>
 
-            <div class="flex items-center gap-4">
-                <p>{{ ux_icon('ic:baseline-phone', { class: 'w-6' }) }}</p>
-                <p>06 40 89 01 09</p>
-            </div>
+    <section id="contact" class="flex flex-col lg:flex-row gap-12 px-6 py-16 bg-white shadow-md rounded-lg max-w-7xl mx-auto">
+        <div class="lg:w-1/2 space-y-6">
+            <h2 class="text-3xl font-bold text-fuchsia-800">Discutons ensemble</h2>
+            <a href="tel:+33640890109" class="flex items-center gap-4 text-gray-700">
+                <span>{{ ux_icon('ic:baseline-phone', { class: 'w-6' }) }}</span> 06 40 89 01 09
+            </a>
 
-            <div class="flex items-center gap-4">
-                <p>{{ ux_icon('material-symbols:mail', { class: 'w-6' }) }}</p>
-                <p>contact@emiliechanavat.com</p>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <p>{{ ux_icon('mdi:google-maps', { class: 'w-6' }) }}</p>
-                <p>Lyon, France</p>
+            <a href="mailto:contact@emiliechanavat.com" class="flex items-center gap-4 text-gray-700">
+                <span>{{ ux_icon('material-symbols:mail', { class: 'w-6' }) }}</span> contact@emiliechanavat.com
+            </a>
+            <div class="flex items-center gap-4 text-gray-700">
+                <span>{{ ux_icon('mdi:google-maps', { class: 'w-6' }) }}</span> Lyon, France
             </div>
         </div>
 
-        <!-- Bloc droit : Formulaire -->
-        <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6 space-y-4">
+        <div class="lg:w-1/2">
             <p class="text-lg text-gray-700">Une question, un projet ou juste envie d’échanger ? Contactez-moi, je vous répondrai avec plaisir.</p>
 
             {% for message in app.flashes('success') %}
@@ -147,13 +126,51 @@
             </div>
 
             <div>
-                {{ form_widget(form.envoyer, {'attr': {'class': 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300'}}) }}
+                {{ form_widget(form.envoyer, {'attr': {'class': 'bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-semibold py-2 px-4 rounded-full transition duration-300'}}) }}
             </div>
 
             {{ form_end(form) }}
         </div>
 
     </section>
+
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-semibold">Emilie CHANAVAT</h3>
+                <p class="mt-2 text-gray-400">Lyon, France</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold">Menu</h3>
+                <ul class="mt-2 space-y-1 text-gray-400">
+                    <li><a href="#about" class="hover:text-white transition">A propos</a></li>
+                    <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    <li><a href="#cv" class="hover:text-white transition">Mon CV</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold">Réseaux sociaux</h3>
+                <div class="mt-2 flex justify-center md:justify-start gap-4 text-gray-400">
+                    <a href="https://www.linkedin.com/in/émilie-chanavat/" target="_blank" class="hover:text-white transition">
+                        {{ ux_icon('mdi:linkedin', {class : 'w-6'}) }}
+                    </a>
+                    <a href="https://github.com/emilieChnvt" target="_blank" class="hover:text-white transition">
+                        {{ ux_icon('mdi:github', {class : 'w-6'}) }}
+                    </a>
+                    <a href="mailto:contact@emiliechanavat.com" class="hover:text-white transition">
+                        {{ ux_icon('material-symbols:mail', {class : 'w-6'}) }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center text-gray-500 text-sm">
+            <p class="mt-10 text-center text-gray-500 text-sm">© emiliechanavat.com. Tous les droits réservés.</p>
+        </div>
+    </footer>
+
 
 
 

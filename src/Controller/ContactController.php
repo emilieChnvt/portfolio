@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactForm;
+use App\Repository\ProjetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ContactController extends AbstractController
 {
     #[Route('/', name: 'app_contact')]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer, ProjetRepository $projetRepository): Response
     {
         $form = $this->createForm(ContactForm::class);
         $form->handleRequest($request);
@@ -41,6 +42,8 @@ final class ContactController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'form' => $form->createView(),
+            'projets' => $projetRepository->findAll(),
+
         ]);
     }
 }

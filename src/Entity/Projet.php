@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProjetRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
@@ -21,6 +22,9 @@ class Projet
 
     #[ORM\OneToOne(inversedBy: 'projet', cascade: ['persist', 'remove'])]
     private ?Image $image = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
 
     public function getId(): ?int
     {
@@ -59,6 +63,18 @@ class Projet
     public function setImage(?Image $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -1,14 +1,30 @@
-document.getElementById('openModal').addEventListener('click', function () {
-    document.getElementById('modal').classList.remove('hidden');
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-document.getElementById('closeModal').addEventListener('click', function () {
-    document.getElementById('modal').classList.add('hidden');
-});
+    // Ouvrir la modale correspondante
+    document.querySelectorAll('.openModal').forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            const modal = document.querySelector(`.modal[data-id="${id}"]`);
+            modal.classList.remove('hidden');
+        });
+    });
 
-// Optional: Close on background click
-document.getElementById('modal').addEventListener('click', function (e) {
-    if (e.target === this) {
-        this.classList.add('hidden');
-    }
+    // Fermer la modale correspondante
+    document.querySelectorAll('.closeModal').forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            const modal = document.querySelector(`.modal[data-id="${id}"]`);
+            modal.classList.add('hidden');
+        });
+    });
+
+    // Fermer la modale si clic en dehors
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    });
+
 });

@@ -50,7 +50,6 @@
 
     <section id="about" class="flex flex-col lg:flex-row items-center justify-center min-h-screen gap-10 px-6 py-16 bg-gradient-to-b from-fuchsia-50 via-white to-amber-50">
 
-        <!-- Bloc de gauche : Emilie en 5 questions -->
         <div class="lg:w-1/3">
 
         </div>
@@ -75,19 +74,20 @@
     <section id="projects" class="min-h-screen px-6 py-16 text-center bg-gradient-to-t from-fuchsia-50 via-white to-amber-50">
         <h4 class="text-4xl mb-12 font-semibold text-fuchsia-800">Mes projets</h4>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-3 gap-8 max-w-7xl mx-auto">
         {% for projet in projets %}
             <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
-                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-cover w-full h-48">
+                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-contain w-full h-48 bg-gray-100"
+                >
 
                 <div class="flex justify-between items-center w-full">
                     <p class="text-lg font-medium text-gray-800">{{ projet.name }}</p>
                     <div>
-                        <button id="openModal" class="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10">
+                        <button  class=" openModal rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10" data-id="{{ projet.id }}">
                             Voir détails du projet
                         </button>
 
-                        <div id="modal" class="hidden fixed inset-0 z-10 overflow-y-auto" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
+                        <div data-id="{{ projet.id }}"  class="modal hidden fixed inset-0 z-10 overflow-y-auto" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
                             <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
                             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -113,7 +113,7 @@
                                     </div>
 
                                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                        <button id="closeModal" type="button" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                                        <button  type="button" class="closeModal inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">
                                             Fermer
                                         </button>
                                     </div>
@@ -125,9 +125,10 @@
 
                 </div>
             </div>
-        </div>
 
         {% endfor %}
+        </div>
+
     </section>
 
     <section id="cv" class="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-r from-amber-200 to-fuchsia-300">

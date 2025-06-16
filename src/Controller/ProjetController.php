@@ -38,7 +38,7 @@ final class ProjetController extends AbstractController
     }
 
     #[Route('/projet/addImage/{id}', name: 'app_projet_new_image')]
-    public function addImage(Request $request, EntityManagerInterface $entityManager, Projet $projet): Response
+    public function addImage(Request $request, EntityManagerInterface $entityManager, Projet $projet, ProjetRepository $projetRepository): Response
     {
         if(!$projet){ return $this->redirectToRoute('app_projet_new');}
 
@@ -49,10 +49,13 @@ final class ProjetController extends AbstractController
             $image->setProjet($projet);
             $entityManager->persist($image);
             $entityManager->flush();
-            return $this->redirectToRoute('app_projet_index');
+            return $this->redirectToRoute('app_home', [
+                'projets' => $projetRepository->findAll(),
+            ]);
 
         }
         return $this->render('projet/addImage.html.twig', [
+
             'projet' => $projet,
             'form' => $form->createView(),
         ]);
@@ -69,7 +72,7 @@ final class ProjetController extends AbstractController
     }
 
     #[Route('/projet/{id}/edit', name: 'app_projet_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
+    public function edit(ProjetRepository $projetRepository, Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProjetForm::class, $projet);
         $form->handleRequest($request);
@@ -77,7 +80,9 @@ final class ProjetController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_projet_index');
+            return $this->redirectToRoute('app_home',[
+                'projets'=>$projetRepository->findAll()
+            ]);
         }
 
         return $this->render('projet/edit.html.twig', [

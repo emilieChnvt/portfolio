@@ -77,9 +77,9 @@
         <div class="grid grid-cols-3 gap-8 max-w-7xl mx-auto">
         {% for projet in projets %}
             <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
-                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-contain w-full h-48 bg-gray-100"
-                >
-
+            {%  if projet.image %}
+                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-contain w-full h-48 bg-gray-100">
+            {% endif %}
                 <div class="flex justify-between items-center w-full">
                     <p class="text-lg font-medium text-gray-800">{{ projet.name }}</p>
                     <div>
@@ -113,7 +113,7 @@
                                     </div>
 
                                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                        <button  type="button" class="closeModal inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                                        <button data-id="{{ projet.id }}" type="button" class="closeModal inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">
                                             Fermer
                                         </button>
                                     </div>
@@ -137,7 +137,7 @@
             <p class="mb-8 text-lg text-fuchsia-800">
                 Vous souhaitez en savoir plus sur mon expérience et mes compétences ? Téléchargez mon CV au format PDF.
             </p>
-            <a href="{{ asset('images/cv.26.11.pdf') }}" download
+            <a href="{{ asset('images/EMILIE_CHANAVAT_CV.pdf') }}" download
                class="inline-flex items-center gap-3 bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
                 {{ ux_icon('material-symbols:download', {class : 'w-6'}) }}
                 Télécharger mon CV

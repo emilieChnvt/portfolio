@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Form\ContactForm;
 use App\Repository\ProjetRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

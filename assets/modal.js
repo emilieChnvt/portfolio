@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Ouvrir la modale correspondante
     document.querySelectorAll('.openModal').forEach(button => {
         button.addEventListener('click', () => {
             const id = button.dataset.id;
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fermer la modale correspondante
     document.querySelectorAll('.closeModal').forEach(button => {
         button.addEventListener('click', () => {
             const id = button.dataset.id;
@@ -18,13 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fermer la modale si clic en dehors
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-            }
-        });
-    });
+
 
 });

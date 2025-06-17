@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Émilie Chanavat - Développeuse Web Fullstack à Lyon{% endblock %}
 {% block javascripts %}
     {{ parent() }}
     {{ importmap('modal') }}
@@ -43,7 +43,8 @@
 
 
                 <div class="w-full max-w-sm">
-                    <img src="{{ asset('images/imageOfMe.webp') | imagine_filter('product') }}" alt="Emilie" class="w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="{{ asset('images/imageOfMe.webp') | imagine_filter('product') }}" alt="Photo d’Émilie Chanavat, développeuse web"
+                         class="w-full h-auto object-cover rounded-xl shadow-lg">
                 </div>
             </div>
         </div>
@@ -73,13 +74,13 @@
     </section>
 
     <section id="projects" class="min-h-screen px-6 py-16 text-center bg-gradient-to-t from-fuchsia-50 via-white to-amber-50">
-        <h4 class="text-4xl mb-12 font-semibold text-fuchsia-800">Mes projets</h4>
+        <h2 class="text-4xl mb-12 font-semibold text-fuchsia-800">Mes projets</h2>
 
         <div class="grid grid-cols-3 gap-8 max-w-7xl mx-auto">
         {% for projet in projets %}
             <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-start" data-aos="flip-left">
             {%  if projet.image %}
-                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Projet 1" class="rounded-lg mb-4 object-contain w-full h-48 bg-gray-100">
+                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Capture d'écran du projet {{ projet.name }}" class="rounded-lg mb-4 object-contain w-full h-48 bg-gray-100">
             {% endif %}
                 <div class="flex justify-between items-center w-full">
                     <p class="text-lg font-medium text-gray-800">{{ projet.name }}</p>

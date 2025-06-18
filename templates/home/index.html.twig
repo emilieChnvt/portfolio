@@ -110,6 +110,13 @@
                                                 {% else %}
                                                     <p class="text-gray-400 italic">Aucun lien GitHub fourni.</p>
                                                 {% endif %}
+                                                {% if projet.linkToSite %}
+                                                    <a href="{{ projet.linkToSite }}" target="_blank" class="inline-block text-green-600 hover:underline font-medium">
+                                                        🌐 Voir le site
+                                                    </a>
+                                                {% else %}
+                                                    <p class="text-gray-400 italic">Aucun site en ligne fourni.</p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

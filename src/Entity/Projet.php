@@ -26,6 +26,9 @@ class Projet
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkToSite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Projet
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLinkToSite(): ?string
+    {
+        return $this->linkToSite;
+    }
+
+    public function setLinkToSite(?string $linkToSite): static
+    {
+        $this->linkToSite = $linkToSite;
 
         return $this;
     }

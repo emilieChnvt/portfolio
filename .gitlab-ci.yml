@@ -9,35 +9,37 @@ cache:
         - vendor/
 
 stages:
-
-    - CodingStandards1
-
-
+    - SecurityChecker
+    - CodingStandards
+    - UnitTests
 
 security-checker:
     stage: SecurityChecker
     script:
         - local-php-security-checker --path=./composer.lock
     allow_failure: false
+    only: otherbranch
 
 
 phpcs:
-    stage: CodingStandards1
+    stage: CodingStandards
     script:
         - phpcs -v --standard=PSR12 --ignore=./src/Kernel.php ./src
     allow_failure: false
 
 phpstan:
-    stage: CodingStandards2
+    stage: CodingStandards
     script:
         - phpstan analyse ./src
     allow_failure: false
+    only: otherbranch
 
 twig-lint:
-    stage: CodingStandards2
+    stage: CodingStandards
     script:
         - twig-lint lint ./templates
     allow_failure: false
+    only: otherbranch
 
 phpunit:
     stage: UnitTests
@@ -60,3 +62,4 @@ phpunit:
     script:
         - php bin/phpunit
     allow_failure: false
+    only: otherbranch

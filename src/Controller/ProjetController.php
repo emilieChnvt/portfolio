@@ -15,8 +15,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ProjetController extends AbstractController
 {
-
-
     #[Route('/projet/new', name: 'app_projet_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -38,29 +36,32 @@ final class ProjetController extends AbstractController
     }
 
     #[Route('/projet/addImage/{id}', name: 'app_projet_new_image')]
-    public function addImage(Request $request, EntityManagerInterface $entityManager, Projet $projet, ProjetRepository $projetRepository): Response
+    public function addImage(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Projet $projet,
+        ProjetRepository $projetRepository): Response
     {
-        if(!$projet){ return $this->redirectToRoute('app_projet_new');}
+        if(!$projet){
+            return $this->redirectToRoute('app_projet_new');
+        }
 
         $image = new Image();
         $form = $this->createForm(ImageForm::class, $image);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $image->setProjet($projet);
             $entityManager->persist($image);
             $entityManager->flush();
             return $this->redirectToRoute('app_home', [
                 'projets' => $projetRepository->findAll(),
             ]);
-
         }
         return $this->render('projet/addImage.html.twig', [
 
             'projet' => $projet,
             'form' => $form->createView(),
         ]);
-
-
     }
 
     #[Route('/projet/{id}', name: 'app_projet_show', methods: ['GET'])]
@@ -72,7 +73,10 @@ final class ProjetController extends AbstractController
     }
 
     #[Route('/projet/{id}/edit', name: 'app_projet_edit', methods: ['GET', 'POST'])]
-    public function edit(ProjetRepository $projetRepository, Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
+    public function edit(
+        ProjetRepository $projetRepository,
+        Request $request, Projet $projet,
+        EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProjetForm::class, $projet);
         $form->handleRequest($request);
@@ -80,8 +84,8 @@ final class ProjetController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home',[
-                'projets'=>$projetRepository->findAll()
+            return $this->redirectToRoute('app_home', [
+                'projets' => $projetRepository->findAll()
             ]);
         }
 
@@ -94,7 +98,7 @@ final class ProjetController extends AbstractController
     #[Route('/projet/{id}', name: 'app_projet_delete', methods: ['POST'])]
     public function delete(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $projet->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($projet);
             $entityManager->flush();
         }

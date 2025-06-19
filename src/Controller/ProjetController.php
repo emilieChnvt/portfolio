@@ -15,6 +15,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ProjetController extends AbstractController
 {
+    #[Route('/', name: 'projets')]
+    public function index(ProjetRepository $projetRepository): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'projets' => $projetRepository->findAll(),
+        ]);
+    }
     #[Route('/projet/new', name: 'app_projet_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -31,11 +38,11 @@ final class ProjetController extends AbstractController
 
         return $this->render('projet/new.html.twig', [
             'projet' => $projet,
-            'form' => $form,
+            'form' => $form
         ]);
     }
 
-    #[Route('/projet/addImage/{id}', name: 'app_projet_new_image')]
+    #[Route('/projet/addImage/{id}', name: 'app_projet_new_image') ]
     public function addImage(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -68,8 +75,8 @@ final class ProjetController extends AbstractController
     public function show(Projet $projet): Response
     {
         return $this->render('projet/show.html.twig', [
-            'projet' => $projet,
-        ]);
+            'projet' => $projet
+            ]);
     }
 
     #[Route('/projet/{id}/edit', name: 'app_projet_edit', methods: ['GET', 'POST'])]

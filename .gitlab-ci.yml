@@ -9,10 +9,10 @@ cache:
         - vendor/
 
 stages:
-    #- SecurityChecker
+
     - CodingStandards1
-    #- CodingStandards2
-    #- UnitTests
+
+
 
 security-checker:
     stage: SecurityChecker

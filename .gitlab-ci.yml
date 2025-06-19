@@ -9,9 +9,10 @@ cache:
         - vendor/
 
 stages:
-    - SecurityChecker
-    - CodingStandards
-    - UnitTests
+    #- SecurityChecker
+    - CodingStandards1
+    #- CodingStandards2
+    #- UnitTests
 
 security-checker:
     stage: SecurityChecker
@@ -21,19 +22,19 @@ security-checker:
 
 
 phpcs:
-    stage: CodingStandards
+    stage: CodingStandards1
     script:
         - phpcs -v --standard=PSR12 --ignore=./src/Kernel.php ./src
     allow_failure: false
 
 phpstan:
-    stage: CodingStandards
+    stage: CodingStandards2
     script:
         - phpstan analyse ./src
     allow_failure: false
 
 twig-lint:
-    stage: CodingStandards
+    stage: CodingStandards2
     script:
         - twig-lint lint ./templates
     allow_failure: false

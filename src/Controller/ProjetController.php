@@ -47,9 +47,9 @@ final class ProjetController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         Projet $projet,
-        ProjetRepository $projetRepository): Response
-    {
-        if(!$projet){
+        ProjetRepository $projetRepository
+    ): Response{
+        if (!$projet) {
             return $this->redirectToRoute('app_projet_new');
         }
 
@@ -83,8 +83,8 @@ final class ProjetController extends AbstractController
     public function edit(
         ProjetRepository $projetRepository,
         Request $request, Projet $projet,
-        EntityManagerInterface $entityManager): Response
-    {
+        EntityManagerInterface $entityManager
+    ): Response{
         $form = $this->createForm(ProjetForm::class, $projet);
         $form->handleRequest($request);
 

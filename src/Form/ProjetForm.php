@@ -16,6 +16,7 @@ class ProjetForm extends AbstractType
         $builder
             ->add('name')
             ->add('linkToGithub')
+            ->add('linkToSite')
             ->add('description')
         ;
     }

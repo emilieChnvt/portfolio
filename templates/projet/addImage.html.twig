@@ -1,36 +1,32 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/photo.css') }}">
-{% endblock %}
+
+{% block title %}Ajouter une image{% endblock %}
 
 {% block body %}
+    <div class="min-h-screen flex items-center justify-center bg-black px-6 py-16">
+        {{ form_start(form, { attr: { class: 'flex flex-col items-center space-y-6 w-full max-w-sm bg-white rounded-xl p-8 shadow-lg' } }) }}
 
-
-    <div class="flex mt-5 items-center justify-center bg-black">
-        {{ form_start(form, {
-            form_attr:{
-                clas:'flex mt-5 items-center justify-center'
-            }
-        }) }}
-        <label class="custom-upload">
-            <span class="camera-icon">📷</span>
-            <span>Prendre une photo</span>
-            {{ form_row(form.imageFile, {
+        <label
+            for="{{ form.imageFile.vars.id }}"
+            class="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-10 text-gray-600 hover:border-fuchsia-500 hover:text-fuchsia-600 transition-colors duration-300 w-full text-center"
+        >
+            <span class="text-4xl mb-3">📷</span>
+            <span class="text-lg font-medium">Prendre une photo ou sélectionner un fichier</span>
+            {{ form_widget(form.imageFile, {
                 attr: {
-                    'accept': 'image/*',
-                    'capture': 'environment'
-                }})
-            }}
+                    accept: 'image/*',
+                    capture: 'environment',
+                }
+            }) }}
         </label>
 
-        <button type="submit" class="btn bg-white">Envoyer</button>
+        <button
+            type="submit"
+            class="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300"
+        >
+            Envoyer
+        </button>
+
         {{ form_end(form) }}
     </div>
-
-
 {% endblock %}
-
-{% block title %}
-
-{% endblock %}
-

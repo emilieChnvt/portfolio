@@ -1,37 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projet index{% endblock %}
+{% block title %}Liste des projets{% endblock %}
 
 {% block body %}
-    <h1>Projet index</h1>
+    <div class="min-h-screen px-6 py-16 bg-gradient-to-t from-fuchsia-50 via-white to-amber-50">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl font-semibold mb-6 text-center text-fuchsia-800">Liste des projets</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>LinkToGithub</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for projet in projets %}
-            <tr>
-                <td>{{ projet.id }}</td>
-                <td>{{ projet.name }}</td>
-                <td>{{ projet.linkToGithub }}</td>
-                <td>
-                    <a href="{{ path('app_projet_show', {'id': projet.id}) }}">show</a>
-                    <a href="{{ path('app_projet_edit', {'id': projet.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="text-center mb-12">
+                <a href="{{ path('app_projet_new') }}"
+                   class="inline-block bg-fuchsia-600 text-white px-6 py-3 rounded-lg shadow hover:bg-fuchsia-700 transition duration-300 font-semibold">
+                    ➕ Ajouter un projet
+                </a>
+            </div>
 
-    <a href="{{ path('app_projet_new') }}">Create new</a>
+            {% if projets is empty %}
+                <p class="text-center text-gray-600 text-lg">Aucun projet pour le moment.</p>
+            {% else %}
+                <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {% for projet in projets %}
+                        <div class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col p-6 hover:shadow-lg transition duration-300" data-aos="fade-up">
+
+                            {% if projet.image %}
+                                <img src="{{ vich_uploader_asset(projet.image,'imageFile') | imagine_filter('projects') }}" alt="Image du projet {{ projet.name }}" class="rounded-md mb-4 object-cover w-full h-48 bg-gray-100">
+                            {% endif %}
+
+                            <h2 class="text-xl font-semibold text-fuchsia-700 mb-2">{{ projet.name }}</h2>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                {{ projet.description|length > 150 ? projet.description[:150] ~ '...' : projet.description }}
+                            </p>
+
+                            <div class="mt-auto space-x-2">
+                                {% if projet.linkToGithub %}
+                                    <a href="{{ projet.linkToGithub }}" target="_blank" class="inline-block bg-gray-900 text-white text-sm px-4 py-2 rounded hover:bg-gray-800 transition">
+                                        Voir sur GitHub
+                                    </a>
+                                {% endif %}
+
+                                {% if projet.linkToSite %}
+                                    <a href="{{ projet.linkToSite }}" target="_blank" class="inline-block bg-fuchsia-600 text-white text-sm px-4 py-2 rounded hover:bg-fuchsia-700 transition">
+                                        Voir le site
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('app_projet_edit', { id: projet.id }) }}" class="inline-block mt-4 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                                    ✏️ Éditer
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

@@ -177,6 +177,7 @@
                 </div>
             {% endfor %}
 
+            {% if form is defined %}
             {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
 
             <div>
@@ -208,6 +209,7 @@
             </div>
 
             {{ form_end(form) }}
+            {% endif %}
         </div>
 
     </section>

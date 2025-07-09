@@ -98,7 +98,7 @@ final class ProjetController extends AbstractController
         ]);
     }
 
-    #[Route('/projet/{id}', name: 'app_projet_delete', methods: ['POST'])]
+    #[Route('/projet/{id}/delete', name: 'app_projet_delete', methods: ['POST'])]
     public function delete(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $projet->getId(), $request->getPayload()->getString('_token'))) {
@@ -106,6 +106,6 @@ final class ProjetController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_projet_index');
+        return $this->redirectToRoute('app_admin');
     }
 }

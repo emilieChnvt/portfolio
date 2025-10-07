@@ -30,7 +30,7 @@
                                 {{ projet.description|length > 150 ? projet.description[:150] ~ '...' : projet.description }}
                             </p>
 
-                            <div class="mt-auto space-x-2">
+                            <div class="mt-auto space-x-2 flex flex-col">
                                 {% if projet.linkToGithub %}
                                     <a href="{{ projet.linkToGithub }}" target="_blank" class="inline-block bg-gray-900 text-white text-sm px-4 py-2 rounded hover:bg-gray-800 transition">
                                         Voir sur GitHub

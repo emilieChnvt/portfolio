@@ -45,7 +45,7 @@ final class CvController extends AbstractController
                     '<p>Cordialement,<br><strong>Émilie Chanavat</strong></p>' .
                     '<p><a href="https://emiliechanavat.com" target="_blank" rel="noopener noreferrer">Mon site web</a></p>'
                 )
-                ->attachFromPath($this->getParameter('kernel.project_dir').'/public/images/EMILIE_CHANAVAT_CV.pdf', 'Mon-CV.pdf');
+                ->attachFromPath($this->getParameter('kernel.project_dir').'/public/images/Emilie CHANAVAT CV-3.pdf', 'Mon-CV.pdf');
 
             $mailer->send($email);
             $this->addFlash('success', 'Votre CV a été envoyé par mail !');

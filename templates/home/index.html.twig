@@ -210,8 +210,11 @@
                 {{ form_widget(form.message, {'attr': {'class': 'w-full border border-gray-300 rounded px-3 py-2 min-h-[120px]'}}) }}
                 {{ form_errors(form.message) }}
             </div>
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-            <div>
+
+                <div>
                 {{ form_widget(form.envoyer, {'attr': {'class': 'bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-semibold py-2 px-4 rounded-full transition duration-300'}}) }}
             </div>
 
